@@ -3,6 +3,24 @@ from discord.ext import commands
 from discord import app_commands
 import secrets
 import time
+import threading
+import os
+from flask import Flask
+
+# ====== FLASK KEEP-ALIVE ======
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Bot is alive"
+
+def run_flask():
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
+
+def keep_alive():
+    t = threading.Thread(target=run_flask, daemon=True)
+    t.start()
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 VERIFY_ROLE_ID = 1551157925043507200
@@ -158,5 +176,5 @@ async def setupverify(interaction: discord.Interaction):
     await interaction.channel.send(embed=embed, view=VerifyView())
     await interaction.response.send_message("Verification panel sent.", ephemeral=True)
 
-
+keep_alive()   # chạy Flask trước
 bot.run(TOKEN)
