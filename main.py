@@ -4,7 +4,7 @@ from discord import app_commands
 import secrets
 import time
 
-TOKEN = "YOUR_BOT_TOKEN"
+TOKEN = os.getenv("DISCORD_TOKEN")
 VERIFY_ROLE_ID = 123456789012345678
 VERIFY_CHANNEL_ID = 123456789012345678
 TOKEN_TTL = 300
