@@ -148,7 +148,6 @@ class VerifyView(discord.ui.View):
 
         await interaction.response.send_modal(TokenModal(user_id=user.id))
 
-
 @bot.event
 async def on_ready():
     bot.add_view(VerifyView())
@@ -159,6 +158,10 @@ async def on_ready():
         print(f"Sync error: {e}")
     print(f"Bot online: {bot.user}")
 
+    await bot.change_presence(
+        status=discord.Status.idle,
+        activity=discord.Game(name="")
+    )
 
 @bot.tree.command(name="setupverify", description="Send the verification panel to this channel")
 @app_commands.checks.has_permissions(administrator=True)
