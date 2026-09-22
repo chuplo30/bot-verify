@@ -108,7 +108,7 @@ class VerifyView(discord.ui.View):
         super().__init__(timeout=None)
 
     @discord.ui.button(
-        label="Verify",
+        label="Verify <:verry:1551829234505220217>",
         style=discord.ButtonStyle.success,
         custom_id="verify_button",
     )
@@ -164,7 +164,7 @@ async def on_ready():
 @app_commands.checks.has_permissions(administrator=True)
 async def setupverify(interaction: discord.Interaction):
     embed = discord.Embed(
-        title="Verification",
+        title="Verification <:verry:1551829234505220217> ",
         description=(
             "**To minimize bots on our Discord server, we ask for verification.**\n\n"
             "Click the button below to verify yourself.\n"
