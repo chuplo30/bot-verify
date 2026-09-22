@@ -108,7 +108,7 @@ class VerifyView(discord.ui.View):
         super().__init__(timeout=None)
 
     @discord.ui.button(
-        label="Verify <:verry:1551829234505220217>",
+        label="Verify ",
         style=discord.ButtonStyle.success,
         custom_id="verify_button",
     )
